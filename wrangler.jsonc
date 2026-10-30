@@ -3,7 +3,28 @@
   "name": "estate",
   "main": "worker/index.mjs",
   "compatibility_date": "2026-10-27",
-  "assets": { "directory": "./dist", "binding": "ASSETS", "run_worker_first": ["/api/*"] },
-  "vars": { "DEMO_MODE": "true", "PILOT_ENABLED": "false" },
-  "triggers": { "crons": ["0 4 * * *"] }
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  },
+  "vars": {
+    "DEMO_MODE": "true",
+    "PILOT_ENABLED": "false"
+  },
+  "triggers": {
+    "crons": [
+      "0 4 * * *"
+    ]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "estate-pilot",
+      "database_id": "072a0866-ede9-494c-acf4-d2c945d5002f",
+      "migrations_dir": "migrations"
+    }
+  ]
 }
