@@ -56,7 +56,9 @@ With demo mode off, the API requires a configured D1 binding named `DB`. It proj
 
 ## Cloudflare setup (manual; not deployed by this commit)
 
-Install a supported Wrangler v4 release using your normal development environment. Build first, then use `wrangler dev` for Worker emulation. Before connecting real inventory:
+Install the pinned deployment tooling with `npm ci`. Run `npm run deploy:check` to build and validate the upload without publishing. After signing in to the intended Cloudflare account with `npx wrangler login`, run `npm run deploy` to publish the demo Worker and assets. These commands build the web client automatically. This deployment keeps fictional inventory and all live submissions disabled.
+
+Use `npx wrangler dev` for Worker emulation. Before connecting real inventory:
 
 1. Create the D1 database with `wrangler d1 create estate-canada`.
 2. Add its actual binding under `d1_databases` in `wrangler.jsonc`, with `binding: "DB"`, `database_name`, `database_id` and `migrations_dir: "migrations"`.
