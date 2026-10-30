@@ -14,6 +14,7 @@
 - Expo SDK 58 scaffold uses versions resolved by `expo install`.
 - TypeScript check: passed.
 - Expo ESLint: passed.
+- Clean-install CI initially found React DOM resolving to a newer patch than Expo's pinned React. React DOM is now explicitly SDK-aligned at 19.3.0; the lockfile was regenerated and CI rerun.
 - Android and iOS release JavaScript/Hermes asset exports: passed locally. Local Windows Hermes initially could not write to the sandbox-provided temporary path; export succeeded after using a workspace-local temporary directory. This was not an APK/IPA build.
 - No Android/iOS device test, signed APK/IPA, EAS build or TestFlight submission yet.
 
