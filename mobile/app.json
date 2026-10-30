@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "Estate Canada Preview",
+    "slug": "estate-canada",
+    "version": "0.1.0",
+    "scheme": "estatecanadapreview",
+    "plugins": ["expo-router"],
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.wiantribe.estate.preview"
+    },
+    "android": {
+      "package": "com.wiantribe.estate.preview",
+      "blockedPermissions": ["android.permission.SYSTEM_ALERT_WINDOW", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE"],
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183f35">
+  <meta name="description" content="Explore Estate: a New Brunswick rental platform prototype with transparent costs and clear next steps.">
+  <title>Estate — A better place to begin</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="demo-banner">WORKING PROTOTYPE <span>Fictional homes. Requests stay on this device; nothing is sent.</span></div>
+  <header class="site-header">
+    <a class="brand" href="#discover" aria-label="Estate home"><span class="brand-mark" aria-hidden="true">⌂</span> estate<span class="brand-dot">.</span></a>
+    <nav aria-label="Main navigation">
+      <button data-page="discover" class="nav-link active" aria-current="page">Find a home</button>
+      <button data-page="saved" class="nav-link">Saved homes <span id="saved-count">0</span></button>
+      <button data-page="activity" class="nav-link">My activity</button>
+      <button data-page="landlord" class="nav-link">For landlords</button>
+    </nav>
+    <button id="privacy-button" class="quiet-button">Privacy & demo data</button>
+  </header>
+  <main id="main" tabindex="-1"></main>
+  <footer><a class="brand" href="#discover">estate.</a><p>Thoughtfully built for New Brunswick. <span>By WianTribe.</span></p><button id="clear-data" class="text-button">Clear my demo data</button></footer>
+  <dialog id="detail-dialog" aria-labelledby="dialog-heading"><button class="close-button" id="close-dialog" aria-label="Close dialog">×</button><div id="dialog-content"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <noscript>This prototype needs JavaScript. No personal documents or payments are collected.</noscript>
+</body>
+</html>
