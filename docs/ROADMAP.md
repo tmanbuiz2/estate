@@ -12,6 +12,8 @@
 
 ## Next: private pilot infrastructure
 
+Version 0.2.0 implements a configuration-gated web pilot; see [PRIVATE-PILOT.md](PRIVATE-PILOT.md). Verified Access identities, operator-approved roles, moderated listing drafts, live API discovery, minimal applications/viewing requests, confidential reports, tenancy-linked repair requests, permission-tracked imports and request retention are implemented and tested locally. Account/provider setup, operational/privacy review and remote verification remain outstanding. The checklist below tracks the broader launch requirements, not just presence of endpoint code.
+
 - [ ] Agree the business role with NB counsel/FCNB: publisher, software provider, broker or property manager. Rental trading definitions are broad; do not assume a listing platform is exempt.
 - [ ] Choose production branding and review trademark/domain availability.
 - [ ] Implement verified accounts, recovery, MFA for administration, server authorization, request throttling and abuse controls.

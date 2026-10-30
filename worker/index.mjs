@@ -1,5 +1,6 @@
 import { filterListings, parseFilters } from '../packages/domain/index.mjs';
 import { demoListings } from '../packages/domain/demo.mjs';
+import { handlePilot, pilotReady, expirePilotRequests, VERSION } from './pilot.mjs';
 
 const headers = {
   'Content-Type': 'application/json; charset=utf-8',
@@ -26,8 +27,10 @@ export function publicListing(row) {
 
 export async function handleApi(request, env = {}) {
   const url = new URL(request.url);
-  if (url.pathname === '/api/health' && request.method === 'GET') return json({ status: 'ok', mode: env.DEMO_MODE === 'true' ? 'demo' : 'read-only', writesEnabled: false });
-  if (request.method !== 'GET') return json({ error: 'Live accounts, document uploads, payments and submissions are not enabled in this prototype.' }, 405, { Allow: 'GET' });
+  if (url.pathname === '/api/health' && request.method === 'GET') return json({ status: 'ok', version: VERSION, mode: env.DEMO_MODE === 'true' ? 'demo' : pilotReady(env) ? 'private-pilot' : 'read-only', writesEnabled: pilotReady(env), paymentsEnabled: false, uploadsEnabled: false });
+  if (url.pathname === '/api/config' && request.method === 'GET') return json({ version: VERSION, demo: env.DEMO_MODE === 'true', pilotEnabled: pilotReady(env), privacyContact: env.PRIVACY_CONTACT || null });
+  if (url.pathname === '/api/workspace' || url.pathname.startsWith('/api/workspace/')) return handlePilot(request, env, json);
+  if (request.method !== 'GET') return json({ error: 'This endpoint does not accept changes. Enabled requests use the authenticated workspace. Payments and document uploads are unavailable.' }, 405, { Allow: 'GET' });
   if (!/^\/api\/listings(?:\/[^/]+)?$/.test(url.pathname)) return json({ error: 'Not found' }, 404);
   let filters;
   try { filters = parseFilters(url.searchParams); } catch (e) { return json({ error: e.message }, 400); }
@@ -51,6 +54,7 @@ export async function handleApi(request, env = {}) {
 }
 
 export default {
+  async scheduled(event, env, ctx) { ctx.waitUntil(expirePilotRequests(env)); },
   async fetch(request, env) {
     if (new URL(request.url).pathname.startsWith('/api/')) return handleApi(request, env);
     if (!env.ASSETS) return new Response('Static assets are not configured.', { status: 503 });

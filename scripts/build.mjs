@@ -1,5 +1,5 @@
 import { mkdir, copyFile } from 'node:fs/promises';
-const targets = ['index.html', 'app.mjs', 'styles.css'];
+const targets = ['index.html', 'app.mjs', 'demo-app.mjs', 'live-app.mjs', 'workspace.html', 'workspace.mjs', 'styles.css'];
 await mkdir('dist/shared', { recursive: true });
 await mkdir('dist/art', { recursive: true });
 for (const file of targets) await copyFile('web/' + file, 'dist/' + file);

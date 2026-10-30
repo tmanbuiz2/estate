@@ -6,13 +6,17 @@ The repository started empty. The first slice makes discovery and the monthly-co
 
 The provisional name is Estate. No domain or trademark availability has been established.
 
-## Data flow today
+## Data flow in default demo mode
 
 1. The web client loads fictional inventory bundled with the application.
 2. Search, cost calculations and sorting run locally.
 3. Hearts, comparisons and drafts use `estate-demo-v1` browser storage.
 4. No prototype action is forwarded to a landlord or an application endpoint.
 5. The Worker exposes an independent read-only sample API for integration work. When configured for live reads, it needs D1 and returns only published, recently confirmed NB inventory.
+
+## Version 0.2.0 private pilot
+
+`/api/config` chooses the demo module or the live web client. Live discovery uses `/api/listings`; it never substitutes bundled samples. `/workspace.html` connects to authenticated `/api/workspace` routes. Cloudflare Access tokens are verified inside the Worker, and configuration allowlists assign administrator/landlord roles. D1 stores minimal account, listing, request, consent-version and tenancy-link records. Landlords see requests for their own listings; confidential reports go to administrators. A nightly cron removes old requests using the configured retention period. `docs/PRIVATE-PILOT.md` documents configuration, data purposes, deployment checks and limitations. The default configuration keeps this pilot disabled.
 
 ## Planned live architecture
 
@@ -26,13 +30,13 @@ The provisional name is Estate. No domain or trademark availability has been est
 ## Security decisions
 
 - No secrets in the clients or source tree. Native environment variables prefixed `EXPO_PUBLIC_` are public.
-- No credential or document routes are stubbed as success. Unsupported writes return an explicit error.
+- No credential or document routes are stubbed as success. Unsupported writes return an explicit error; private-pilot writes require verified identity, role/ownership checks, same-origin request headers and configured retention/privacy contact.
 - API errors do not reveal database details. Public projections use an allowlist.
 - Production inventory does not silently fall back to fictional inventory.
 - No cross-origin browser API access is enabled by default. Add only reviewed explicit origins if the deployment needs it.
 - Web uses a restrictive Content Security Policy and no third-party executable scripts.
 - No tenant ranking by protected grounds and no automated approval/rejection in this release.
-- Database records are drafts by default. A future publish action requires server-side checks and moderation.
+- Database records are drafts by default. The private-pilot publish action requires administrator review of a submitted listing with recorded content permission.
 
 ## Costs and estimates
 

@@ -2,11 +2,11 @@
 
 ## Web/API checks
 
-- Node test runner: 20 domain, API and actual SQLite schema/query tests pass.
+- Version 0.2.0: 27 domain, API, Access-signature and actual SQLite schema/query tests pass. New tests cover forged/expired/wrong-audience tokens, spoofed identity headers, required configuration, role and ownership checks, draft/review publication, consent, private reports, duplicate applications, CSRF, atomic import validation, throttling, tenancy-linked repairs, retention and profile deletion.
 - JavaScript syntax check: passed.
 - Static build: passed.
 - Local HTTP smoke check: HTML, client modules, styles, all three illustrations and API endpoints respond successfully. Total-budget filtering and blocked submissions checked over HTTP.
-- Initial SQL migration: applied successfully to an in-memory SQLite database. D1-specific remote execution is not yet verified.
+- Both SQL migrations apply successfully to an in-memory SQLite database; private-pilot integration tests run the real queries against that schema. D1-specific remote execution is not yet verified.
 - Manual browser/assistive-technology review: not performed; browser automation was not available in this session.
 
 ## Mobile checks
@@ -27,3 +27,5 @@ The independent web/Worker implementation has no third-party runtime dependencie
 ## Release limits
 
 This is a source prototype. Functional tests do not establish legal compliance, production security, accessibility conformance, availability of housing or approval by any regulator/platform.
+
+Version 0.2.0 has not been deployed or tested against the user's live Cloudflare account in this session. Network access to that account was unavailable. The Access application, remote D1 database, cleanup cron, role configuration and live browser behaviour still need deployment verification. No third-party listing content or photos have been copied or represented as available homes.
