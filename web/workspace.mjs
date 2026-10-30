@@ -18,7 +18,7 @@ function requestForm() {
 }
 function render() {
   const privileged = ['admin','landlord'].includes(data.user.role);
-  root.innerHTML = `<div class="page-heading"><div class="eyebrow">Private pilot � 0.2.0</div><h1>Your next steps, together.</h1><p>Signed in as ${esc(data.user.email)} � ${esc(data.user.role)}</p></div><p id="workspace-message" role="status">${esc(message)}</p><div class="notice">Requests are stored and visible in this workspace. Check here for updates; email notifications are not connected. Payments, screening, legal notices and document uploads are unavailable.</div><div class="activity-grid"><section class="panel"><h2>Requests and updates</h2><p>Showing up to ${data.limit} recent requests.</p>${data.requests.length ? data.requests.map(item => {
+  root.innerHTML = `<div class="page-heading"><div class="eyebrow">Private pilot � 0.2.1</div><h1>Your next steps, together.</h1><p>Signed in as ${esc(data.user.email)} � ${esc(data.user.role)}</p></div><p id="workspace-message" role="status">${esc(message)}</p><div class="notice">Requests are stored and visible in this workspace. Check here for updates; email notifications are not connected. Payments, screening, legal notices and document uploads are unavailable.</div><div class="activity-grid"><section class="panel"><h2>Requests and updates</h2><p>Showing up to ${data.limit} recent requests.</p>${data.requests.length ? data.requests.map(item => {
     const own = item.user_id === data.user.id;
     const canManage = data.user.role === 'admin' || (!own && privileged && item.kind !== 'report');
     const active = ['submitted','acknowledged'].includes(item.status);

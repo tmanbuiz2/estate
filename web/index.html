@@ -11,7 +11,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="demo-banner">ESTATE 0.2.0 � WORKING PROTOTYPE <span>Fictional homes. Requests stay on this device; nothing is sent.</span></div>
+  <div class="demo-banner">ESTATE 0.2.1 � WORKING PROTOTYPE <span>Fictional homes. Requests stay on this device; nothing is sent.</span></div>
   <header class="site-header">
     <a class="brand" href="#discover" aria-label="Estate home"><span class="brand-mark" aria-hidden="true"></span> estate<span class="brand-dot">.</span></a>
     <nav aria-label="Main navigation">
@@ -23,6 +23,19 @@
     <button id="privacy-button" class="quiet-button">Privacy & demo data</button>
   </header>
   <main id="main" tabindex="-1"></main>
+  <section class="content-section" aria-labelledby="rental-sources">
+    <h2 id="rental-sources">Explore more rental sources</h2>
+    <p>Continue your search on these external websites. Their listings are not imported into Estate. Prices, availability and applications are handled by each source.</p>
+    <div class="activity-grid">
+      <article class="panel"><h3>REALTOR.ca</h3><p>Explore Canadian property listings and rental searches.</p><a href="https://www.realtor.ca/" target="_blank" rel="noopener noreferrer">Visit REALTOR.ca (new tab)</a></article>
+      <article class="panel"><h3>Zillow</h3><p>Browse Zillow's Fredericton rental search.</p><a href="https://www.zillow.com/fredericton-nb/rentals/" target="_blank" rel="noopener noreferrer">Search Zillow (new tab)</a></article>
+      <article class="panel"><h3>Zumper</h3><p>Explore apartments listed in Fredericton.</p><a href="https://www.zumper.com/apartments-for-rent/fredericton-nb" target="_blank" rel="noopener noreferrer">Search Zumper (new tab)</a></article>
+      <article class="panel"><h3>Apartments.com</h3><p>Continue your Fredericton apartment search.</p><a href="https://www.apartments.com/fredericton-nb/" target="_blank" rel="noopener noreferrer">Search Apartments.com (new tab)</a></article>
+      <article class="panel"><h3>RentCafe</h3><p>Browse rental properties in Fredericton.</p><a href="https://www.rentcafe.com/apartments-for-rent/fredericton-nb/" target="_blank" rel="noopener noreferrer">Search RentCafe (new tab)</a></article>
+      <article class="panel"><h3>Local property managers</h3><p>Explore rental options offered by Fredericton Rentals.</p><a href="https://fredericton.rentals/" target="_blank" rel="noopener noreferrer">Visit Fredericton Rentals (new tab)</a></article>
+    </div>
+    <p class="fine-print">External sources are independent services. Estate does not claim a partnership or verify their listings. Listing feeds will be connected only when the required access and content permissions are in place.</p>
+  </section>
   <footer><a class="brand" href="#discover">estate.</a><p>Thoughtfully built for New Brunswick. <span>By WianTribe.</span></p><button id="clear-data" class="text-button">Clear my demo data</button></footer>
   <dialog id="detail-dialog" aria-labelledby="dialog-heading"><button class="close-button" id="close-dialog" aria-label="Close dialog">x</button><div id="dialog-content"></div></dialog>
   <div id="toast" role="status" aria-live="polite"></div>

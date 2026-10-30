@@ -11,7 +11,7 @@ const response = await fetch(base + '/api/listings?maxTotal=1500');
 const data = await response.json();
 const config = await (await fetch(base + '/api/config')).json();
 assert.equal(data.demo, config.demo);
-assert.equal(config.version, '0.2.0');
+assert.equal(config.version, '0.2.1');
 if (config.demo) assert.deepEqual(data.listings.map(l => l.id), ['demo-03']);
 else assert.ok(data.listings.every(l => !l.demo));
 assert.ok([302, 303, 307, 401, 503].includes((await fetch(base + '/api/workspace', { redirect: 'manual' })).status));

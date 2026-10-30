@@ -1,6 +1,6 @@
 import { authenticate, accessIssuer, HttpError } from './auth.mjs';
 import { validateViewing } from '../packages/domain/index.mjs';
-export const VERSION = '0.2.0';
+export const VERSION = '0.2.1';
 export const CONSENT_VERSION = 'pilot-2026-10-30';
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export function pilotReady(env) {
